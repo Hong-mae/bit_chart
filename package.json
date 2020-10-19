@@ -1,0 +1,40 @@
+{
+  "name": "bit_chart",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "iphone": "react-native run-ios --device \"Chill_bi's iPhone\"",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "moment": "^2.29.1",
+    "native-base": "^2.13.14",
+    "path": "^0.12.7",
+    "react": "16.13.1",
+    "react-native": "0.63.3",
+    "react-native-splash-screen": "^3.2.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/runtime": "^7.12.1",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.5.2",
+    "eslint": "^7.11.0",
+    "jest": "^26.5.3",
+    "metro-react-native-babel-preset": "^0.63.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
