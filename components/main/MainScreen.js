@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Header, Title, Body, Text, View, Spinner, Icon, Content, Card, Button } from 'native-base';
+import React, { useEffect, useRef } from 'react'
+import { Container, Header, Title, Body, Text, View, Spinner, Icon, Content, Card, Right, CardItem } from 'native-base';
 import { Dimensions, StyleSheet, Alert } from 'react-native';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,6 @@ import moment from 'moment';
 import ChartItem from '../chart/ChartItem';
 
 const MainScreen = () => {
-    const [runRefresh, setRunRefresh] = useState(false)
     const dispatch = useDispatch();
     const { status, charts, date, error, loading } = useSelector(
         ({ bitCoinCharts, loading }) => {
@@ -31,16 +30,14 @@ const MainScreen = () => {
         }
     )
 
+    useInterval(() => {
+        dispatch(bitCoinsChart());
+    }, 1000);
+
+
     useEffect(() => {
         dispatch(bitCoinsChart());
     }, [dispatch])
-
-    const height = Dimensions.get('window').height;
-
-    const refreshScreen = () => {
-        console.log("press");
-        setRunRefresh(true);
-    }
 
     if (loading) {
         return (
@@ -58,7 +55,7 @@ const MainScreen = () => {
             <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
                 <Icon
                     type='FontAwesome'
-                    name='refresh'
+                    name='close'
                     style={{ fontSize: 60 }}
                     onPress={refreshScreen} />
                 <Text style={{ fontSize: 20, fontWeight: "bold" }}>
@@ -88,31 +85,30 @@ const MainScreen = () => {
                         ))}
                     </Card>
                 </Content>
-            )}
+            )
+            }
         </Container >
     )
 }
 
-const styles = StyleSheet.create({
-    loadingContainer: {
-        flex: 1,
-        flexDirection: "row"
-    },
-    redContent: {
-        flex: 1,
-        backgroundColor: "red",
-        height: 100
-    },
-    yellowContent: {
-        flex: 1,
-        backgroundColor: "yellow",
-        height: 100
-    },
-    blueContent: {
-        flex: 1,
-        backgroundColor: "blue",
-        height: 100
-    },
-})
+function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    // Remember the latest function.
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+        function tick() {
+            savedCallback.current();
+        }
+        if (delay !== null) {
+            let id = setInterval(tick, delay);
+            return () => clearInterval(id);
+        }
+    }, [delay]);
+}
 
 export default MainScreen
