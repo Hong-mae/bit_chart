@@ -20,15 +20,15 @@ const ChartItem = ({ chart }) => {
         <View>
             <CardItem bordered button onPress={() => setVisibility(!visibility)} style={{ flexDirection: "column" }}>
                 <CardItem style={{ marginLeft: -15, marginRight: -15 }}>
-                    <Thumbnail source={_symbol.img} small style={styles.thumbnail} />
+                    <Thumbnail source={_symbol.img} />
                     <View style={styles.symbol}>
                         <View style={styles.header}>
                             <Text style={styles.title}>{symbol}</Text>
-                            <Text style={styles.price}>{parseInt(data.closing_price).toLocaleString()} KRW</Text>
+                            <Text style={styles.price}>{parseInt(data.closing_price).toLocaleString()} 원</Text>
                         </View>
                     </View>
                     <Right style={styles.right}>
-                        <Icon type='MaterialIcons' name='swap-vert' />
+                        <Icon type='MaterialIcons' name={visibility ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} />
                     </Right>
                 </CardItem>
 

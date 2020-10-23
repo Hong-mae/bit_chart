@@ -29,24 +29,16 @@ const ChartItemDetail = ({ symbol, data }) => {
     return (
         <View style={{ backgroundColor: "#eee", flex: 1, paddingLeft: 15, paddingRight: 15, paddingTop: 10, paddingBottom: 10 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>min</Text>
-                <Text style={styles.price}>{parseInt(data.min_price).toLocaleString()} KRW</Text>
+                <Text>최소가</Text>
+                <Text style={styles.price}>{parseInt(data.min_price).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>max</Text>
-                <Text style={styles.price}>{parseInt(data.max_price).toLocaleString()} KRW</Text>
+                <Text>최대가</Text>
+                <Text style={styles.price}>{parseInt(data.max_price).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>traded</Text>
-                <Text style={styles.price}>{parseInt(data.units_traded).toLocaleString()} {symbol}</Text>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>traded price</Text>
-                <Text style={styles.price}>{parseInt(data.acc_trade_value).toLocaleString()} KRW</Text>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>yesterday</Text>
-                <Text style={styles.price}>{parseInt(data.prev_closing_price).toLocaleString()} KRW</Text>
+                <Text>전날 종가</Text>
+                <Text style={styles.price}>{parseInt(data.prev_closing_price).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text>traded 24H</Text>
@@ -54,11 +46,11 @@ const ChartItemDetail = ({ symbol, data }) => {
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text>traded price 24H</Text>
-                <Text style={styles.price}>{parseInt(data.acc_trade_value_24H).toLocaleString()} KRW</Text>
+                <Text style={styles.price}>{parseInt(data.acc_trade_value_24H).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text>fluctate 24H</Text>
-                <Text style={styles.price}>{parseInt(data.fluctate_24H).toLocaleString()} KRW</Text>
+                <Text style={styles.price}>{parseInt(data.fluctate_24H).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text>fluctate rate 24H</Text>
