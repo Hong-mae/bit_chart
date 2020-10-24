@@ -41,19 +41,7 @@ const ChartItemDetail = ({ symbol, data }) => {
                 <Text style={styles.price}>{parseInt(data.prev_closing_price).toLocaleString()} 원</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>traded 24H</Text>
-                <Text style={styles.price}>{parseInt(data.units_traded_24H).toLocaleString()} {symbol}</Text>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>traded price 24H</Text>
-                <Text style={styles.price}>{parseInt(data.acc_trade_value_24H).toLocaleString()} 원</Text>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>fluctate 24H</Text>
-                <Text style={styles.price}>{parseInt(data.fluctate_24H).toLocaleString()} 원</Text>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text>fluctate rate 24H</Text>
+                <Text>변동률</Text>
                 <Text style={[styles.price, rateColor()]}>{rate}%</Text>
             </View>
         </View>
